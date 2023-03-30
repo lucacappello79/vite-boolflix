@@ -17,6 +17,7 @@ export default {
 
     props: {
 
+        img: String,
         title: String,
         originalTitle: String,
         language: String,
@@ -30,6 +31,9 @@ export default {
 
 <template>
     <div class="card">
+        <div class="image">
+            <img :src="img" alt="">
+        </div>
         <div class="title">
             {{ title }}
         </div>
@@ -57,6 +61,15 @@ export default {
 
     div {
         color: white;
+    }
+
+    .image {
+        height: 250px;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
     }
 }
 </style>
