@@ -56,7 +56,7 @@ export default {
     font-weight: bold;
 
     div {
-        color: blue;
+        color: white;
     }
 }
 </style>

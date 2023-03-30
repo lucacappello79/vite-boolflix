@@ -27,12 +27,30 @@ export default {
 <template>
     <main>
         <div class="content">
-            <AppCard v-for="(item, index) in store.movies" :title="item.title" :originaltitle="item.original_title"
-                :language="item.original_language" :score="vote_average"></AppCard>
+            <AppCard v-for="(item, index) in store.movies" :title="item.title ? item.title : item.name"
+                :originaltitle="item.original_title ? item.original_title : item.original_name"
+                :language="item.original_language" :score="item.vote_average"></AppCard>
         </div>
     </main>
 </template>
 
 
   
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use "../scss/variables" as *;
+
+main {
+    background-color: black;
+
+    .content {
+
+        @include centered();
+
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        row-gap: 20px;
+    }
+
+}
+</style>
