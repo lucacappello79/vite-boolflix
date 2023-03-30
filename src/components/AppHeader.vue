@@ -31,7 +31,7 @@ export default {
             </div>
             <div class="search-field">
                 <input v-model="store.movieName" type="text" placeholder="Search movie"
-                    @keyup.enter="$emit('searchMovieName')">
+                    @keyup.enter="$emit('search-movie', store.movieName)">
             </div>
         </div>
     </header>

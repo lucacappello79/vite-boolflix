@@ -27,19 +27,18 @@ export default {
     });
   },
 
-  // methods: {
+  methods: {
 
-  //   search() {
+    searchMovie(movieName) {
 
-  //     let apiNewString = this.store.APIquery + this.store.movieName;
+      axios.get(this.store.APIcall + movieName).then((res) => {
+        console.log(res);
+        console.log(res.data.results);
+        this.store.movies = res.data.results;
 
-  //     axios.get(apiNewString).then((res) => {
-  //       this.store.movies = res.data.data;
-  //     });
-
-  //   },
-
-  // },
+      });
+    }
+  }
 
 };
 </script>
@@ -48,7 +47,7 @@ export default {
 <template>
   <div class="container">
 
-    <AppHeader></AppHeader>
+    <AppHeader @search-movie="searchMovie"></AppHeader>
     <AppMain></AppMain>
 
   </div>
