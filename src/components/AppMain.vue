@@ -3,8 +3,6 @@
 import { store } from "../store.js";
 import AppCard from "./AppCard.vue";
 
-import AppCard from "./components/AppCard.vue"
-
 export default {
 
     name: "AppMain",
@@ -28,8 +26,10 @@ export default {
 
 <template>
     <main>
-        Main
-        <AppCard></AppCard>
+        <div class="content">
+            <AppCard v-for="(item, index) in store.movies" :title="item.title" :originaltitle="item.original_title"
+                :language="item.original_language" :score="vote_average"></AppCard>
+        </div>
     </main>
 </template>
 

@@ -15,7 +15,12 @@ export default {
         }
     },
 
-    components: {
+    props: {
+
+        title: String,
+        originalTitle: String,
+        language: String,
+        score: Number,
 
     },
 };
@@ -25,11 +30,33 @@ export default {
 
 <template>
     <div class="card">
-        Card
-
+        <div class="title">
+            {{ title }}
+        </div>
+        <div class="original-title">
+            {{ originalTitle }}
+        </div>
+        <div class="language">
+            {{ language }}
+        </div>
+        <div class="title">
+            {{ score }}
+        </div>
     </div>
 </template>
 
 
   
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card {
+
+    width: 200px;
+    border: 1px solid black;
+    padding: 10px;
+    font-weight: bold;
+
+    div {
+        color: blue;
+    }
+}
+</style>

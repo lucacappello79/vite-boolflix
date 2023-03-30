@@ -4,7 +4,6 @@ import { store } from "./store.js"
 
 import AppHeader from "./components/AppHeader.vue"
 import AppMain from "./components/AppMain.vue"
-import AppCard from "./components/AppCard.vue"
 
 export default {
   data() {
@@ -14,33 +13,33 @@ export default {
   },
 
   components: {
+
     AppMain,
     AppHeader,
-    AppCard,
+
   },
 
   created() {
 
     axios.get(this.store.APIcall).then((res) => {
-      console.log(res);
-      console.log(res.data.data);
-      this.store.movies = res.data.data;
+      console.log(res.data.results);
+      this.store.movies = res.data.results;
     });
   },
 
-  methods: {
+  // methods: {
 
-    search() {
+  //   search() {
 
-      let apiNewString = this.store.APIquery + this.store.movieName;
+  //     let apiNewString = this.store.APIquery + this.store.movieName;
 
-      axios.get(apiNewString).then((res) => {
-        this.store.movies = res.data.data;
-      });
+  //     axios.get(apiNewString).then((res) => {
+  //       this.store.movies = res.data.data;
+  //     });
 
-    },
+  //   },
 
-  },
+  // },
 
 };
 </script>
