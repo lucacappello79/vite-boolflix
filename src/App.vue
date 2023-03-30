@@ -21,7 +21,7 @@ export default {
 
   created() {
 
-    axios.get(this.store.APIcall).then((res) => {
+    axios.get(this.store.APIcallTrending).then((res) => {
       console.log(res.data.results);
       this.store.movies = res.data.results;
     });
@@ -54,4 +54,8 @@ export default {
 </template>
 
 
-<style lang="scss"></style>
+<style lang="scss">
+.container {
+  overflow: hidden;
+}
+</style>
