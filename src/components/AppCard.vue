@@ -24,7 +24,37 @@ export default {
         score: Number,
 
     },
-};
+
+    methods: {
+
+        getCountryCode(language) {
+
+            const languageToFlag = {
+
+                en: 'us',
+                es: 'es',
+                fr: 'fr',
+                it: 'it',
+                de: 'de',
+                co: 'co',
+                ja: 'jp',
+                gr: 'gr',
+                in: 'in',
+                ko: 'kr',
+                ar: 'ar',
+                zh: 'cn',
+                hi: 'in',
+                id: 'id',
+                tr: 'tr',
+                th: 'th',
+            };
+
+            return languageToFlag[language] || 'unknown';
+        },
+
+    },
+
+}
 
 </script>
 
@@ -46,15 +76,16 @@ export default {
                     Original title:
                 </div>
                 <!-- <div class="original-title-title">
-                                                    {{ title === originalTitle ? 'same title' : originalTitle }}
-                                                </div> -->
+                    {{ title === originalTitle ? 'same title' : originalTitle }}
+                    </div> -->
                 <div class="original-title-title">
                     {{ originalTitle.slice(0, 30) }}{{ originalTitle.length > 30 ? "..." : "" }}
                 </div>
             </div>
             <div class="language">
-                Language: {{ language }}
-                <span class="fi fi-jp"></span>
+                <!-- Language: {{ language }} -->
+                Language:
+                <span :class="'fi fi-' + getCountryCode(language)"></span>
             </div>
         </div>
     </div>
