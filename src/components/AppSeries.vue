@@ -5,7 +5,7 @@ import AppCard from "./AppCard.vue";
 
 export default {
 
-    name: "AppMain",
+    name: "AppSeries",
 
     data() {
 
@@ -13,7 +13,7 @@ export default {
 
             store,
 
-            displayedTrending: 12,
+            displayedSeries: 12,
             showMore: true,
         }
     },
@@ -27,11 +27,11 @@ export default {
 
             if (this.showMore) {
 
-                this.displayedTrending += 12;
+                this.displayedSeries += 12;
 
             } else {
 
-                this.displayedTrending = 12;
+                this.displayedSeries = 12;
             }
 
             this.showMore = !this.showMore;
@@ -46,15 +46,7 @@ export default {
 <template>
     <main>
         <div class="content">
-            <!-- <AppCard v-for="(item, index) in store.movies" :img="'https://image.tmdb.org/t/p/w200/' + item.poster_path" -->
-            <!-- <AppCard v-for="(item, index) in store.movies.slice(0, displayedMovies)"
-                                :img="'https://image.tmdb.org/t/p/w200/' + item.poster_path" :title="item.title ? item.title : item.name"
-                                :originalTitle="item.original_title ? item.original_title : item.original_name"
-                                :language="item.original_language" :score="item.vote_average">
-                            </AppCard> -->
-            <!-- <AppCard v-for="(item, index) in store.trending.slice(0, displayedTrending)" -->
-            <AppCard
-                v-for="(item, index) in (store.movies.length > 0 ? store.movies : store.trending).slice(0, displayedTrending)"
+            <AppCard v-for="(item, index) in store.series.slice(0, displayedSeries)"
                 :img="'https://image.tmdb.org/t/p/w200/' + item.poster_path" :title="item.title ? item.title : item.name"
                 :originalTitle="item.original_title ? item.original_title : item.original_name"
                 :language="item.original_language" :score="item.vote_average">
@@ -65,11 +57,12 @@ export default {
 </template>
 
 
-  
+
 <style lang="scss" scoped>
 @use "../scss/variables" as *;
 
 main {
+
     .content {
         @include centered();
 
@@ -85,7 +78,7 @@ main {
         background-color: black;
         display: block;
         margin: 30px auto 50px;
-        ;
+
         color: white;
         font-size: 0.8em;
         font-weight: bold;

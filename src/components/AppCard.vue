@@ -45,12 +45,16 @@ export default {
                 <div class="original-title-text">
                     Original title:
                 </div>
+                <!-- <div class="original-title-title">
+                                                    {{ title === originalTitle ? 'same title' : originalTitle }}
+                                                </div> -->
                 <div class="original-title-title">
-                    {{ title === originalTitle ? 'same title' : originalTitle }}
+                    {{ originalTitle.slice(0, 30) }}{{ originalTitle.length > 30 ? "..." : "" }}
                 </div>
             </div>
             <div class="language">
-                {{ language }}
+                Language: {{ language }}
+                <span class="fi fi-jp"></span>
             </div>
         </div>
     </div>
@@ -59,6 +63,8 @@ export default {
 
   
 <style lang="scss" scoped>
+@import "/node_modules/flag-icons/css/flag-icons.min.css";
+
 .card {
 
     width: 200px;
