@@ -23,48 +23,65 @@ export default {
 
   created() {
 
-    // axios.get(this.store.APIcallTrending).then((res) => {
-    //   console.log(res.data.results);
-    //   this.store.movies = res.data.results; //test test test
-    // });
-
-    axios.get(this.store.APIcallTrending).then((res) => {
+    axios.get(this.store.APIcallTrendingMovies).then((res) => {
       console.log(res.data.results);
-      this.store.trending = res.data.results; //test test test
+      this.store.trendingMovies = res.data.results;
+    });
+
+    axios.get(this.store.APIcallTrendingTv).then((res) => {
+      console.log(res.data.results);
+      this.store.trendingTv = res.data.results;
     });
   },
 
+  // methods: {
+
+  //   searchMovie() { 
+
+  //     axios.get(this.store.APIcallMovies + this.store.movieName).then((res) => {
+  //       console.log(res);
+  //       console.log('res.data.results => movies', res.data.results)
+  //       this.store.movies = res.data.results;
+  //     });
+
+  //     axios.get(this.store.APIcallSeries + this.store.movieName).then((res) => {
+  //       console.log(res);
+  //       console.log(res.data.results);
+  //       this.store.series = res.data.results;
+  //     });
+  //   },
+
+  // },
+
   methods: {
 
-    searchMovie(movieName) {
+    searchMovieOrShow() {
 
-      axios.get(this.store.APIcall + movieName).then((res) => {
+      axios.get(this.store.APIcallMovies + this.store.movieOrShow).then((res) => {
         console.log(res);
-        console.log(res.data.results);
+        console.log('res.data.results => movies', res.data.results)
         this.store.movies = res.data.results;
-
       });
-    },
 
-    searchSeries(seriesName) {
-
-      axios.get(this.store.APIcallSeries + seriesName).then((res) => {
+      axios.get(this.store.APIcallSeries + this.store.movieOrShow).then((res) => {
         console.log(res);
         console.log(res.data.results);
         this.store.series = res.data.results;
       });
+
     },
-  }
 
+  },
 
-};
+}
+
 </script>
-
 
 <template>
   <div class="container">
 
-    <AppHeader @search-movie="searchMovie" @search-series="searchSeries"></AppHeader>
+    <!-- <AppHeader @search-movie="searchMovie()"></AppHeader> -->
+    <AppHeader @search-movieOrShow="searchMovieOrShow()"></AppHeader>
     <AppMain></AppMain>
     <AppSeries></AppSeries>
 

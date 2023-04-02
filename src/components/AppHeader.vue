@@ -15,9 +15,6 @@ export default {
         }
     },
 
-    components: {
-
-    },
 };
 
 </script>
@@ -30,16 +27,18 @@ export default {
                 <span>BoolFlix</span>
             </div>
             <div class="search-field">
+
+                <!-- <div class="movie-search">
+                        <input v-model="store.movieName" type="text" placeholder="Search movie"
+                            @keyup.enter="$emit('search-movie')">
+                        <button @click="$emit('search-movie')">Search</button>
+                    </div> -->
                 <div class="movie-search">
-                    <input v-model="store.movieName" type="text" placeholder="Search movie"
-                        @keyup.enter="$emit('search-movie', store.movieName)">
-                    <button @click="$emit('search-movie', store.movieName)">Search</button>
+                    <input v-model="store.movieOrShow" type="text" placeholder="Search movie"
+                        @keyup.enter="$emit('search-movieOrShow')">
+                    <button @click="$emit('search-movieOrShow')">Search</button>
                 </div>
-                <div class="series-search">
-                    <input v-model="store.seriesName" type="text" placeholder="Search tv show"
-                        @keyup.enter="$emit('search-series', store.seriesName)">
-                    <button @click="$emit('search-series', store.seriesName)">Search</button>
-                </div>
+
             </div>
         </div>
     </header>
@@ -65,7 +64,8 @@ export default {
 }
 
 movie-search,
-series-search {
+series-search,
+movie-series-search {
 
     input {
 

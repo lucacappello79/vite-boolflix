@@ -12,8 +12,7 @@ export default {
         return {
 
             store,
-
-            displayedSeries: 12,
+            displayedSeries: 6,
             showMore: true,
         }
     },
@@ -27,11 +26,11 @@ export default {
 
             if (this.showMore) {
 
-                this.displayedSeries += 12;
+                this.displayedSeries += 6;
 
             } else {
 
-                this.displayedSeries = 12;
+                this.displayedSeries = 6;
             }
 
             this.showMore = !this.showMore;
@@ -42,11 +41,11 @@ export default {
 
 </script>
 
-
 <template>
     <main>
         <div class="content">
-            <AppCard v-for="(item, index) in store.series.slice(0, displayedSeries)"
+            <AppCard
+                v-for="(item, index) in (store.series.length > 0 ? store.series : store.trendingTv).slice(0, displayedSeries)"
                 :img="'https://image.tmdb.org/t/p/w200/' + item.poster_path" :title="item.title ? item.title : item.name"
                 :originalTitle="item.original_title ? item.original_title : item.original_name"
                 :language="item.original_language" :score="item.vote_average">

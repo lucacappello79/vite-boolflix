@@ -12,8 +12,7 @@ export default {
         return {
 
             store,
-
-            displayedTrending: 12,
+            displayedTrending: 6,
             showMore: true,
         }
     },
@@ -27,11 +26,11 @@ export default {
 
             if (this.showMore) {
 
-                this.displayedTrending += 12;
+                this.displayedTrending += 6;
 
             } else {
 
-                this.displayedTrending = 12;
+                this.displayedTrending = 6;
             }
 
             this.showMore = !this.showMore;
@@ -46,15 +45,8 @@ export default {
 <template>
     <main>
         <div class="content">
-            <!-- <AppCard v-for="(item, index) in store.movies" :img="'https://image.tmdb.org/t/p/w200/' + item.poster_path" -->
-            <!-- <AppCard v-for="(item, index) in store.movies.slice(0, displayedMovies)"
-                                :img="'https://image.tmdb.org/t/p/w200/' + item.poster_path" :title="item.title ? item.title : item.name"
-                                :originalTitle="item.original_title ? item.original_title : item.original_name"
-                                :language="item.original_language" :score="item.vote_average">
-                            </AppCard> -->
-            <!-- <AppCard v-for="(item, index) in store.trending.slice(0, displayedTrending)" -->
             <AppCard
-                v-for="(item, index) in (store.movies.length > 0 ? store.movies : store.trending).slice(0, displayedTrending)"
+                v-for="(item, index) in (store.movies.length > 0 ? store.movies : store.trendingMovies).slice(0, displayedTrending)"
                 :img="'https://image.tmdb.org/t/p/w200/' + item.poster_path" :title="item.title ? item.title : item.name"
                 :originalTitle="item.original_title ? item.original_title : item.original_name"
                 :language="item.original_language" :score="item.vote_average">

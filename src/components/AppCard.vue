@@ -27,32 +27,51 @@ export default {
 
     methods: {
 
-        getCountryCode(language) {
+        getCountryCode(ab) {
 
-            const languageToFlag = {
+            if (ab === 'en') {
+                return 'gb';
+            } else if (ab === 'ja') {
+                return 'jp';
+            } else if (ab === 'ko') {
+                return 'kr';
+            } else if (ab === 'zh') {
+                return 'cn';
+            } else if (ab === 'hi') {
+                return 'in';
+            } else if (ab === 'fa') {
+                return 'sy'
+            }
 
-                en: 'us',
-                es: 'es',
-                fr: 'fr',
-                it: 'it',
-                de: 'de',
-                co: 'co',
-                ja: 'jp',
-                gr: 'gr',
-                in: 'in',
-                ko: 'kr',
-                ar: 'ar',
-                zh: 'cn',
-                hi: 'in',
-                id: 'id',
-                tr: 'tr',
-                th: 'th',
-            };
-
-            return languageToFlag[language] || 'unknown';
+            return ab;
         },
 
     },
+
+    // getCountryCode(language) {
+
+    //     const languageToFlag = {
+
+    //         en: 'us',
+    //         es: 'es',
+    //         fr: 'fr',
+    //         it: 'it',
+    //         de: 'de',
+    //         co: 'co',
+    //         ja: 'jp',
+    //         gr: 'gr',
+    //         in: 'in',
+    //         ko: 'kr',
+    //         ar: 'ar',
+    //         zh: 'cn',
+    //         hi: 'in',
+    //         id: 'id',
+    //         tr: 'tr',
+    //         th: 'th',
+    //     };
+
+    //     return languageToFlag[language] || 'unknown';
+    // },
 
 }
 
@@ -75,9 +94,6 @@ export default {
                 <div class="original-title-text">
                     Original title:
                 </div>
-                <!-- <div class="original-title-title">
-                    {{ title === originalTitle ? 'same title' : originalTitle }}
-                    </div> -->
                 <div class="original-title-title">
                     {{ originalTitle.slice(0, 30) }}{{ originalTitle.length > 30 ? "..." : "" }}
                 </div>
