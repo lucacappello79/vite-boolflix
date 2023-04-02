@@ -34,32 +34,13 @@ export default {
     });
   },
 
-  // methods: {
-
-  //   searchMovie() { 
-
-  //     axios.get(this.store.APIcallMovies + this.store.movieName).then((res) => {
-  //       console.log(res);
-  //       console.log('res.data.results => movies', res.data.results)
-  //       this.store.movies = res.data.results;
-  //     });
-
-  //     axios.get(this.store.APIcallSeries + this.store.movieName).then((res) => {
-  //       console.log(res);
-  //       console.log(res.data.results);
-  //       this.store.series = res.data.results;
-  //     });
-  //   },
-
-  // },
-
   methods: {
 
     searchMovieOrShow() {
 
       axios.get(this.store.APIcallMovies + this.store.movieOrShow).then((res) => {
         console.log(res);
-        console.log('res.data.results => movies', res.data.results)
+        console.log(res.data.results)
         this.store.movies = res.data.results;
       });
 
@@ -80,7 +61,6 @@ export default {
 <template>
   <div class="container">
 
-    <!-- <AppHeader @search-movie="searchMovie()"></AppHeader> -->
     <AppHeader @search-movieOrShow="searchMovieOrShow()"></AppHeader>
     <AppMain></AppMain>
     <AppSeries></AppSeries>

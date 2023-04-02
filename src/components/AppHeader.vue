@@ -28,11 +28,6 @@ export default {
             </div>
             <div class="search-field">
 
-                <!-- <div class="movie-search">
-                        <input v-model="store.movieName" type="text" placeholder="Search movie"
-                            @keyup.enter="$emit('search-movie')">
-                        <button @click="$emit('search-movie')">Search</button>
-                    </div> -->
                 <div class="movie-search">
                     <input v-model="store.movieOrShow" type="text" placeholder="Search movie"
                         @keyup.enter="$emit('search-movieOrShow')">
