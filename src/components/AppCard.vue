@@ -21,6 +21,7 @@ export default {
         title: String,
         originalTitle: String,
         language: String,
+        overview: String,
         score: Number,
 
     },
@@ -48,31 +49,6 @@ export default {
 
     },
 
-    // getCountryCode(language) {
-
-    //     const languageToFlag = {
-
-    //         en: 'us',
-    //         es: 'es',
-    //         fr: 'fr',
-    //         it: 'it',
-    //         de: 'de',
-    //         co: 'co',
-    //         ja: 'jp',
-    //         gr: 'gr',
-    //         in: 'in',
-    //         ko: 'kr',
-    //         ar: 'ar',
-    //         zh: 'cn',
-    //         hi: 'in',
-    //         id: 'id',
-    //         tr: 'tr',
-    //         th: 'th',
-    //     };
-
-    //     return languageToFlag[language] || 'unknown';
-    // },
-
 }
 
 </script>
@@ -80,30 +56,55 @@ export default {
 
 <template>
     <div class="card">
-        <div class="image">
-            <img :src="img" alt="">
-            <div class="score">
-                {{ score.toFixed(1) }}
-            </div>
-        </div>
-        <div class="card-text">
+
+        <div class="card-info">
             <div class="title">
-                {{ title.slice(0, 30) }}{{ title.length > 30 ? "..." : "" }}
+                <h3>Title:</h3>
+                <div>{{ title }}</div>
             </div>
             <div class="original-title">
-                <div class="original-title-text">
-                    Original title:
-                </div>
-                <div class="original-title-title">
-                    {{ originalTitle.slice(0, 30) }}{{ originalTitle.length > 30 ? "..." : "" }}
-                </div>
+                <h3>Original title:</h3>
+                <div>{{ originalTitle }}</div>
             </div>
-            <div class="language">
-                <!-- Language: {{ language }} -->
-                Language:
-                <span :class="'fi fi-' + getCountryCode(language)"></span>
+            <!-- <div class="score">
+                    <h3>Score:</h3>
+                    <div>{{ Math.ceil(score) }}</div>
+                </div> -->
+            <div class="overview">
+                <h3>Overview:</h3>
+                <div>
+                    {{ overview.slice(0, 300) }}{{ overview.length > 300 ? "..." : "" }}
+                </div>
             </div>
         </div>
+
+        <div class="card-content">
+            <div class="image">
+                <img :src="img" alt="">
+                <div class="score">
+                    {{ score.toFixed(1) }}
+                </div>
+            </div>
+
+            <div class="card-text">
+                <div class="title">
+                    {{ title.slice(0, 30) }}{{ title.length > 30 ? "..." : "" }}
+                </div>
+                <div class="original-title">
+                    <div class="original-title-text">
+                        Original title:
+                    </div>
+                    <div class="original-title-title">
+                        {{ originalTitle.slice(0, 30) }}{{ originalTitle.length > 30 ? "..." : "" }}
+                    </div>
+                </div>
+                <div class="language">
+                    Language:
+                    <span :class="'fi fi-' + getCountryCode(language)"></span>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -114,10 +115,65 @@ export default {
 
 .card {
 
+    position: relative;
+
     width: 200px;
     border: 1px solid black;
     padding: 10px;
     font-weight: bold;
+
+    .card-info {
+
+        color: grey;
+
+        border: 1px solid grey;
+        padding: 10px;
+        font-weight: bold;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 1s, visibility 1s;
+
+        .title,
+        .overview {
+            overflow-y: hidden;
+            font-style: italic;
+            color: grey;
+            font-size: 12px;
+        }
+
+        h3 {
+            color: white;
+            margin-bottom: 3px;
+            font-size: 13px;
+        }
+    }
+
+    .card-content {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 1s, visibility 1s;
+    }
+
+    &:hover {
+        .card-info {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .card-content {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
 
     .image {
         position: relative;

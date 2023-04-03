@@ -48,7 +48,7 @@ export default {
                 v-for="(item, index) in (store.series.length > 0 ? store.series : store.trendingTv).slice(0, displayedSeries)"
                 :img="'https://image.tmdb.org/t/p/w200/' + item.poster_path" :title="item.title ? item.title : item.name"
                 :originalTitle="item.original_title ? item.original_title : item.original_name"
-                :language="item.original_language" :score="item.vote_average">
+                :language="item.original_language" :score="item.vote_average" :overview="item.overview">
             </AppCard>
         </div>
         <button class="load-more" @click="loadMore">{{ showMore ? 'Load More' : 'Show Less' }}</button>
