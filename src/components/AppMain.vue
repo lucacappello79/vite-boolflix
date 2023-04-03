@@ -45,6 +45,7 @@ export default {
 <template>
     <main>
         <div class="content">
+            <div class="movies">Movies</div>
             <AppCard
                 v-for="(item, index) in (store.movies.length > 0 ? store.movies : store.trendingMovies).slice(0, displayedTrending)"
                 :img="'https://image.tmdb.org/t/p/w200/' + item.poster_path" :title="item.title ? item.title : item.name"
@@ -61,10 +62,25 @@ export default {
 <style lang="scss" scoped>
 @use "../scss/variables" as *;
 
+.movies {
+    position: absolute;
+    top: -25px;
+    left: -30px;
+    z-index: 1;
+
+    color: #ff00ff;
+    background-color: black;
+    font-size: 20px;
+    padding: 8px 15px;
+    border: 1px solid;
+    border-image: linear-gradient(to bottom right, #00ffff, #ff00ff, #ffff00) 1;
+}
+
 main {
     .content {
         @include centered();
 
+        position: relative;
 
         height: 100%;
         display: flex;
