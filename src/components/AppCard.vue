@@ -66,10 +66,10 @@ export default {
                 <h3>Original title:</h3>
                 <div>{{ originalTitle }}</div>
             </div>
-            <!-- <div class="score">
-                    <h3>Score:</h3>
-                    <div>{{ Math.ceil(score) }}</div>
-                </div> -->
+            <div class="stars">
+                <h3>Score:</h3>
+                <div>{{ Math.ceil(score) }}</div>
+            </div>
             <div class="overview">
                 <h3>Overview:</h3>
                 <div>
@@ -154,6 +154,11 @@ export default {
             color: white;
             margin-bottom: 3px;
             font-size: 13px;
+        }
+
+        .stars div {
+            font-size: 14px;
+            margin-bottom: 3px;
         }
     }
 
