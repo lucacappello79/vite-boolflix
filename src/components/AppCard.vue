@@ -41,7 +41,13 @@ export default {
             } else if (ab === 'hi') {
                 return 'in';
             } else if (ab === 'fa') {
-                return 'sy'
+                return 'sy';
+            } else if (ab === 'nb') {
+                return 'no';
+            } else if (ab === 'da') {
+                return 'dk';
+            } else if (ab === 'el') {
+                return 'gr'
             }
 
             return ab;
@@ -68,7 +74,9 @@ export default {
             </div>
             <div class="stars">
                 <h3>Score:</h3>
-                <div>{{ Math.ceil(score) }}</div>
+                <div class="star" v-for="(item, index) in 5">
+                    <i :class="index < Math.ceil(score / 2) ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
+                </div>
             </div>
             <div class="overview">
                 <h3>Overview:</h3>
@@ -140,7 +148,7 @@ export default {
         flex-direction: column;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 1s, visibility 1s;
+        transition: opacity .3s, visibility .3s;
 
         .title,
         .overview {
@@ -156,9 +164,16 @@ export default {
             font-size: 13px;
         }
 
-        .stars div {
-            font-size: 14px;
-            margin-bottom: 3px;
+        .stars {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            color: #ffff00;
+
+            i {
+                font-size: 12px;
+                transform: translate(0, -30%);
+            }
         }
     }
 

@@ -36,15 +36,35 @@ export default {
 
   methods: {
 
+    // searchMovieOrShow() {
+
+    //   axios.get(this.store.APIcallMovies + this.store.movieOrShow).then((res) => {
+    //     console.log(res);
+    //     console.log(res.data.results)
+    //     this.store.movies = res.data.results;
+    //   });
+
+    //   axios.get(this.store.APIcallSeries + this.store.movieOrShow).then((res) => {
+    //     console.log(res);
+    //     console.log(res.data.results);
+    //     this.store.series = res.data.results;
+    //   });
+
+    // },
+
     searchMovieOrShow() {
 
-      axios.get(this.store.APIcallMovies + this.store.movieOrShow).then((res) => {
+      this.store.pathMovies = "/search/movie";
+      this.store.pathShows = "/search/tv"
+      this.store.queryParameters = "&query=" + encodeURIComponent(this.store.movieOrShow);
+
+      axios.get(this.store.baseApi + this.store.pathMovies + this.store.apiKey + this.store.queryParameters).then((res) => {
         console.log(res);
         console.log(res.data.results)
         this.store.movies = res.data.results;
       });
 
-      axios.get(this.store.APIcallSeries + this.store.movieOrShow).then((res) => {
+      axios.get(this.store.baseApi + this.store.pathShows + this.store.apiKey + this.store.queryParameters).then((res) => {
         console.log(res);
         console.log(res.data.results);
         this.store.series = res.data.results;
@@ -60,8 +80,8 @@ export default {
 
 <template>
   <div class="container">
-
-    <AppHeader @search-movieOrShow="searchMovieOrShow()"></AppHeader>
+    <!-- <AppHeader @search-movieOrShow="searchMovieOrShow()"></AppHeader> -->
+    <AppHeader @searchMovieOrShowEvent="searchMovieOrShow()"></AppHeader>
     <AppMain></AppMain>
     <AppSeries></AppSeries>
 

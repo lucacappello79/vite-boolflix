@@ -44,6 +44,7 @@ export default {
 <template>
     <main>
         <div class="content">
+            <div class="tv-shows">Tv Shows</div>
             <AppCard
                 v-for="(item, index) in (store.series.length > 0 ? store.series : store.trendingTv).slice(0, displayedSeries)"
                 :img="'https://image.tmdb.org/t/p/w200/' + item.poster_path" :title="item.title ? item.title : item.name"
@@ -51,7 +52,7 @@ export default {
                 :language="item.original_language" :score="item.vote_average" :overview="item.overview">
             </AppCard>
         </div>
-        <button class="load-more" @click="loadMore">{{ showMore ? 'Load More' : 'Show Less' }}</button>
+        <button class="load-more" @click="loadMore">{{ showMore ? 'Show More' : 'Show Less' }}</button>
     </main>
 </template>
 
@@ -60,10 +61,26 @@ export default {
 <style lang="scss" scoped>
 @use "../scss/variables" as *;
 
+.tv-shows {
+    position: absolute;
+    top: -25px;
+    left: -30px;
+    z-index: 1;
+
+    color: #ff00ff;
+    background-color: black;
+    font-size: 20px;
+    padding: 8px 15px;
+    border: 1px solid;
+    border-image: linear-gradient(to bottom right, #00ffff, #ff00ff, #ffff00) 1;
+}
+
 main {
 
     .content {
         @include centered();
+
+        position: relative;
 
 
         height: 100%;
@@ -76,7 +93,7 @@ main {
     .load-more {
         background-color: black;
         display: block;
-        margin: 30px auto 50px;
+        margin: 20px auto 30px;
 
         color: white;
         font-size: 0.8em;

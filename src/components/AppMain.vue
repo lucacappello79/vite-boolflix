@@ -53,7 +53,7 @@ export default {
                 :language="item.original_language" :score="item.vote_average" :overview="item.overview">
             </AppCard>
         </div>
-        <button class="load-more" @click="loadMore">{{ showMore ? 'Load More' : 'Show Less' }}</button>
+        <button class="load-more" @click="loadMore">{{ showMore ? 'Show More' : 'Show Less' }}</button>
     </main>
 </template>
 
@@ -92,7 +92,7 @@ main {
     .load-more {
         background-color: black;
         display: block;
-        margin: 30px auto 50px;
+        margin: 20px auto 30px;
         ;
         color: white;
         font-size: 0.8em;
