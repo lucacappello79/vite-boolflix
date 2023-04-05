@@ -36,6 +36,18 @@ export default {
             this.showMore = !this.showMore;
 
         },
+
+        randomMissingImg() {
+
+            const missing = [
+                '/img/netflix.jpg',
+                '/img/prime.jpg',
+                '/img/disney.jpg',
+                '/img/hbo.jpg',
+            ];
+
+            return missing[Math.floor(Math.random() * missing.length)];
+        },
     },
 };
 
@@ -48,7 +60,8 @@ export default {
             <div class="movies">Movies</div>
             <AppCard
                 v-for="(item, index) in (store.movies.length > 0 ? store.movies : store.trendingMovies).slice(0, displayedTrending)"
-                :img="'https://image.tmdb.org/t/p/w200/' + item.poster_path" :title="item.title ? item.title : item.name"
+                :img="item.poster_path != null ? 'https://image.tmdb.org/t/p/w200/' + item.poster_path : randomMissingImg()"
+                :title="item.title ? item.title : item.name"
                 :originalTitle="item.original_title ? item.original_title : item.original_name"
                 :language="item.original_language" :score="item.vote_average" :overview="item.overview">
             </AppCard>

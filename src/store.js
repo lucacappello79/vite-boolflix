@@ -7,13 +7,13 @@ export const store = reactive({
     trendingMovies: [],
     trendingTv: [],
 
-    //TEST
-    baseApi: "https://api.themoviedb.org/3",
-    apiKey: "?api_key=9a7f31b303aae58124155b7d128e6721",
-    pathMovies: "",
-    pathShows: "",
-    queryParameters: "",
-    //TEST
+    //pro-version
+    // baseApi: "https://api.themoviedb.org/3",
+    // apiKey: "?api_key=9a7f31b303aae58124155b7d128e6721",
+    // pathMovies: "",
+    // pathShows: "",
+    // queryParameters: "",
+    //pro-version
 
 
     APIcallTrendingTv: "https://api.themoviedb.org/3/trending/tv/week?api_key=9a7f31b303aae58124155b7d128e6721",
