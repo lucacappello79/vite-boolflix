@@ -43,7 +43,7 @@ export default {
                 '/img/netflix.jpg',
                 '/img/prime.jpg',
                 '/img/disney.jpg',
-                '/img/now.jpg',
+                '/img/hbo.jpg',
             ];
 
             return missing[Math.floor(Math.random() * missing.length)];

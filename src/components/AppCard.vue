@@ -26,34 +26,85 @@ export default {
 
     },
 
-    methods: {
+    computed: {
 
-        getCountryCode(ab) {
+        getCountryCode() {
 
-            if (ab === 'en') {
-                return 'gb';
-            } else if (ab === 'ja') {
-                return 'jp';
-            } else if (ab === 'ko') {
-                return 'kr';
-            } else if (ab === 'zh') {
-                return 'cn';
-            } else if (ab === 'hi') {
-                return 'in';
-            } else if (ab === 'fa') {
-                return 'sy';
-            } else if (ab === 'nb') {
-                return 'no';
-            } else if (ab === 'da') {
-                return 'dk';
-            } else if (ab === 'el') {
-                return 'gr'
+            // STANDARD COMPUTED
+            // if (this.language === 'en') {
+            //     return 'gb';
+            // } else if (this.language === 'ja') {
+            //     return 'jp';
+            // } else if (this.language === 'ko') {
+            //     return 'kr';
+            // } else if (this.language === 'zh') {
+            //     return 'cn';
+            // } else if (this.language === 'hi') {
+            //     return 'in';
+            // } else if (this.language === 'fa') {
+            //     return 'sy';
+            // } else if (this.language === 'nb') {
+            //     return 'no';
+            // } else if (this.language === 'da') {
+            //     return 'dk';
+            // } else if (this.language === 'el') {
+            //     return 'gr'
+            // } else {
+            //     return this.language;
+            // }
+
+
+            switch (this.language) {
+
+                case "en": return "gb";
+                case "ja": return "jp";
+                case "ko": return "kr";
+                case "zh": return "cn";
+                case "hi": return "in";
+                case "fa": return "sy";
+                case "nb": return "no";
+                case "da": return "dk";
+                case "el": return "gr";
+                case "he": return "il";
+                case "cs": return "cz";
+                case "ar": return "ae";
+
+                default: return this.language;
+
             }
-
-            return ab;
         },
 
     },
+
+    //USING A METHOD WITH ARGUMENTS, REMOVE COMMENT FROM LINE 159 AND COMMENT LINE 158
+    // methods: {
+
+    //     getCountryCode(ab) {
+
+    //         if (ab === 'en') {
+    //             return 'gb';
+    //         } else if (ab === 'ja') {
+    //             return 'jp';
+    //         } else if (ab === 'ko') {
+    //             return 'kr';
+    //         } else if (ab === 'zh') {
+    //             return 'cn';
+    //         } else if (ab === 'hi') {
+    //             return 'in';
+    //         } else if (ab === 'fa') {
+    //             return 'sy';
+    //         } else if (ab === 'nb') {
+    //             return 'no';
+    //         } else if (ab === 'da') {
+    //             return 'dk';
+    //         } else if (ab === 'el') {
+    //             return 'gr'
+    //         } else {
+    //             return ab;
+    //         }
+    //     },
+
+    // },
 
 }
 
@@ -108,7 +159,8 @@ export default {
                 </div>
                 <div class="language">
                     Language:
-                    <span :class="'fi fi-' + getCountryCode(language)"></span>
+                    <span :class="'fi fi-' + getCountryCode"></span>
+                    <!-- USING METHOD <span :class="'fi fi-' + getCountryCode(language)"></span> -->
                 </div>
             </div>
         </div>
