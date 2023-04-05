@@ -175,6 +175,11 @@ export default {
 
 .card {
 
+    &:hover {
+        scale: 1.2;
+        z-index: 10;
+    }
+
     position: relative;
 
     width: 200px;
@@ -184,23 +189,25 @@ export default {
 
     .card-info {
 
-        color: grey;
-
-        border: 1px solid grey;
-        padding: 10px;
-        font-weight: bold;
-
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
 
         display: flex;
         flex-direction: column;
-        opacity: 0;
+
         visibility: hidden;
+        opacity: 0;
         transition: opacity .3s, visibility .3s;
+
+        color: grey;
+        font-weight: bold;
+        border: 1px solid grey;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(64, 0, 0, 1));
+
 
         .title,
         .overview {
@@ -287,18 +294,19 @@ export default {
     }
 
     .score {
+        position: absolute;
+        bottom: -10px;
+        left: 30px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         color: #ff00ff;
         background-color: black;
         border: 1px solid;
         border-image: linear-gradient(to bottom right, #00ffff, #ff00ff, #ffff00) 1;
-
         padding: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        bottom: -10px;
-        left: 30px;
 
 
         width: 30px;
